@@ -17,6 +17,12 @@ package com.example.inventory.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
+/**
+ * Baris kode di bawah ini merupakan tema warna yang digunakan dalam aplikasi Inventory.
+ * Warna- warna ini sudah termasuk untuk light theme maupun dark theme.
+ * Konstanta- konstanta ini merpresentasikan berbagai macam warna yang digunakan pada UI aplikasi ini, seperti primary
+ * secondary, tertiary, dan lainnya. Setiap warna di bawah ini didefinisikan dengan menggunakan warna hexadecimal (HEX) dan di-assign pada variabel yang sesuai.
+ */
 val md_theme_light_primary = Color(0xFF6B3DD4)
 val md_theme_light_onPrimary = Color(0xFFFFFFFF)
 val md_theme_light_primaryContainer = Color(0xFFE9DDFF)

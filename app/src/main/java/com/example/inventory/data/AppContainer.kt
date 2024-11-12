@@ -21,12 +21,25 @@ import android.content.Context
 /**
  * App container for Dependency injection.
  */
+/**
+ * Interface ini mendefinisikan sebuah contract untuk kelas- kelas lain di dalam aplikasi.
+ * Interface ini memiliki satu property bernama itemRepository dengan tipe ItemsRepository.
+ * Ini berarti setiap kelas yang mengimplementasikan AppContainer harus menyediakan sebuah instance itemsRepository.
+ * Implementasi dari AppContainer ini akan menngguakan OfflineItemRepository untuk memenuhi dependecy pada itemsRepository
+ */
 interface AppContainer {
     val itemsRepository: ItemsRepository
 }
 
 /**
  * [AppContainer] implementation that provides instance of [OfflineItemsRepository]
+ */
+/**
+ * Kelas ini mengimplementasikan AppContainer dan menyediakan instance dari OfflineItemsRepository.
+ * Kelas ini juga menyediakan instance dari InventoryDatabase.
+ * Kelas ini dibuat untuk menyimpan dan menyediakan akses untuk data repositories yang digunakan pada aplikasi ini.
+ * Dengan memiliki sebuah containser yang terpusat seperti kelas AppDataContainer, kita dapat dengan mudah mengakses repositories yang berbeda dari berbagai bagian dari aplikasi ini.
+ * Lazy initialization pada kelas ini memebantu untuk meningkatkan performa karena lazy initialization hanya membuat objek pada saat dibutuhkan saja.
  */
 class AppDataContainer(private val context: Context) : AppContainer {
     /**

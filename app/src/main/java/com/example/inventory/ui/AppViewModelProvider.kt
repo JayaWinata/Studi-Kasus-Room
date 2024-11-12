@@ -31,13 +31,17 @@ import com.example.inventory.ui.item.ItemEntryViewModel
 /**
  * Provides Factory to create instance of ViewModel for the entire Inventory app
  */
+/**
+ * Objek AppViewModelProvider mendefinisikan viewModelFactory yang akan digunakan untuk membuat instance berbagai ViewModel untuk aplikasi ini.
+ * Objek ini menggunakan blok initializer untuk mengatur bagaimana setiap ViewModel akan diinisialisasi.
+ * ItemEditViewMode dan ItemDetailsViewModel akan dibuat dengan SavedStateHandle untuk memulihkan state
+ */
 object AppViewModelProvider {
     val Factory = viewModelFactory {
         // Initializer for ItemEditViewModel
         initializer {
             ItemEditViewModel(
-                this.createSavedStateHandle(),
-                inventoryApplication().container.itemsRepository
+                this.createSavedStateHandle()
             )
         }
         // Initializer for ItemEntryViewModel
@@ -48,14 +52,13 @@ object AppViewModelProvider {
         // Initializer for ItemDetailsViewModel
         initializer {
             ItemDetailsViewModel(
-                this.createSavedStateHandle(),
-                inventoryApplication().container.itemsRepository
+                this.createSavedStateHandle()
             )
         }
 
         // Initializer for HomeViewModel
         initializer {
-            HomeViewModel(inventoryApplication().container.itemsRepository)
+            HomeViewModel()
         }
     }
 }

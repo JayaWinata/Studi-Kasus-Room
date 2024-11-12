@@ -30,6 +30,12 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
+/**
+ * Kode ini mendefinisikan dua color schemes, yaitu untuk light mode dan untuk dark mode dengan menggunakan Material Design 2 color system.
+ * Kemudian terdapat composable InventoryTheme yang digunakan untuk mengatur tema aplikasi.
+ * InventoryTheme ini juga menngatur warna dan tampilan pada status bar sehingga dapat menyesuaikan dengan tema yang digunakan.
+ * Hal ini dapat memastikan UX (User Experience) yang konsisten pada device dan tema yang berbeda
+ */
 private val LightColorScheme = lightColorScheme(
     primary = md_theme_light_primary,
     onPrimary = md_theme_light_onPrimary,

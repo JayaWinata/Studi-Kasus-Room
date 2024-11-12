@@ -17,31 +17,16 @@
 package com.example.inventory.ui.home
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.example.inventory.data.Item
-import com.example.inventory.data.ItemsRepository
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
 
 /**
  * ViewModel to retrieve all items in the Room database.
  */
-class HomeViewModel(itemsRepository: ItemsRepository) : ViewModel() {
-
-    /**
-     * Holds home ui state. The list of items are retrieved from [ItemsRepository] and mapped to
-     * [HomeUiState]
-     */
-    val homeUiState: StateFlow<HomeUiState> =
-        itemsRepository.getAllItemsStream().map { HomeUiState(it) }
-            .stateIn(
-                scope = viewModelScope,
-                started = SharingStarted.WhileSubscribed(TIMEOUT_MILLIS),
-                initialValue = HomeUiState()
-            )
-
+/**
+ * kelas HomeViewModel memiliki konstanta yang bersifat private bernama TIMEOUT_MILLIS yang merepresentasikan nilai timeout dengan waktu 5 detik.
+ * Konstanta ini dapat diakses di dalam HomeViewModel atau kelas lain yang terkait dengan ViewModel ini. TIMEOUT_MILLIS ini digunakan untuk operasi yang memerlukan timeout seperti network request, atau data processing
+ */
+class HomeViewModel() : ViewModel() {
     companion object {
         private const val TIMEOUT_MILLIS = 5_000L
     }
@@ -49,5 +34,8 @@ class HomeViewModel(itemsRepository: ItemsRepository) : ViewModel() {
 
 /**
  * Ui State for HomeScreen
+ */
+/**
+ * Data class HomeUiState merepresentasikan UI state dari Layar Home. State ini termasuk list yang diinisalisasi sebagai empty list
  */
 data class HomeUiState(val itemList: List<Item> = listOf())

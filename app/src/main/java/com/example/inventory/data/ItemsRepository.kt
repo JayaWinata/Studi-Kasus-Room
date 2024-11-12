@@ -20,6 +20,17 @@ import kotlinx.coroutines.flow.Flow
 
 /**
  * Repository that provides insert, update, delete, and retrieve of [Item] from a given data source.
+ *
+ */
+/**
+ *  Interface ini merupakan kumpulan method yang harus digunakan pada kelas yang mengimplementasikan interface ItemsRepository ini.
+ *  Pada interface ini, terdapat beberapa method yang harus diimplementasikan oleh kelas yang mengimplementasikannya, yaitu:
+ *  1. getAllItemsStream: digunakan untuk mengambil semua items / data dari database room
+ *  2. getItemStrem: digunakan untuk memperoleh item spesific berdasarkan id yang dimasukkan ke dalam parameter
+ *  3. insertItem: digunakan untuk menambahkan item ke dalam database room. Method ini merupakan suspend function, sehingga penggunaannya berkaitan dengan coroutine
+ *  4. deleteItem: digunakan untuk menghapus item di dalam database room. Method ini merupakan suspend function, sehingga penggunaannya berkaitan dengan coroutine
+ *  5. updateItem: digunakan untuk meng-update item yang sudah ada di dalam database room. Method ini merupakan suspend function, sehingga penggunaannya berkaitan dengan coroutine
+ *
  */
 interface ItemsRepository {
     /**
@@ -47,3 +58,4 @@ interface ItemsRepository {
      */
     suspend fun updateItem(item: Item)
 }
+

@@ -22,7 +22,9 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 /**
- * Database class with a singleton Instance object.
+ * Kelas abstrak ini digunakan untuk berinteraksi dengan Room database.
+ * Kelas ini mendefinisikan sebuah Room database bernama item_database yang berisi tabel bernama items.
+ * Kelas ini menggunakan pola singleton untuk memastikan bahwa hanya terdapat satu instance dari kelas ini yang aktif.
  */
 @Database(entities = [Item::class], version = 1, exportSchema = false)
 abstract class InventoryDatabase : RoomDatabase() {
@@ -37,15 +39,9 @@ abstract class InventoryDatabase : RoomDatabase() {
             // if the Instance is not null, return it, otherwise create a new database instance.
             return Instance ?: synchronized(this) {
                 Room.databaseBuilder(context, InventoryDatabase::class.java, "item_database")
-                    /**
-                     * Setting this option in your app's database builder means that Room
-                     * permanently deletes all data from the tables in your database when it
-                     * attempts to perform a migration with no defined migration path.
-                     */
-                    .fallbackToDestructiveMigration()
-                    .build()
-                    .also { Instance = it }
+                    .build().also { Instance = it }
             }
         }
     }
 }
+

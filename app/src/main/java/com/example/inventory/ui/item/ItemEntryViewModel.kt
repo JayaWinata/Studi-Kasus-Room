@@ -27,6 +27,13 @@ import java.text.NumberFormat
 /**
  * ViewModel to validate and insert items in the Room database.
  */
+/**
+ * Kelas ini digunakan untuk mengatur state dan logic untuk menambahkan item baru ke dalam inventory.
+ * Kelas ini menyimpan state saat ini pada item yang akan ditambahkan di dalam properti itemUiState.
+ * Kemudian fungsi updateUiState digunakan untuk mengupdate itemUiState dengan detail item yang baru dan untuk mem-validasi input
+ * Kemudian fungsi saveItem digunakan untuk mem-validasi input dan kemudian menambahkan item yang baru ke dapat repository jika detail-nya valid.
+ * Fungsi validateInput digunakan untuk memeriksa apakah semua field sudah terisi.
+ */
 class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewModel() {
 
     /**
@@ -44,9 +51,6 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
             ItemUiState(itemDetails = itemDetails, isEntryValid = validateInput(itemDetails))
     }
 
-    /**
-     * Inserts an [Item] in the Room database
-     */
     suspend fun saveItem() {
         if (validateInput()) {
             itemsRepository.insertItem(itemUiState.itemDetails.toItem())
@@ -63,11 +67,23 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
 /**
  * Represents Ui State for an Item.
  */
+/**
+ * Data class ini merepresentasikan state pada item yang akan ditambahkan / diedit di dalam aplikasi ini.
+ * Data class ini memiliki dua properti, itemDetails dan isEntryValid.
+ * itemDetails digunakan untuk menyimpan detail spesifik dari item yang akan ditambahkan / diedit.
+ * dan isEntryValid digunakan untuk memeriksa apakah semua field sudah terisi.
+ * Data class ini digunakan untuk mengatur UI state dan mengaktifkan validasi pada user input sebelum menyimpan item yang akan ditambahkan / diedit.
+ */
 data class ItemUiState(
     val itemDetails: ItemDetails = ItemDetails(),
     val isEntryValid: Boolean = false
 )
 
+/**
+ * Data class ini merepresentasikan detail dari satu item di dalam inventory.
+ * Data class ini mengandung empat properti, yaitu id (primary key), nama item, harga item, dan kuantitas.
+ * Data class ini digunakan untuk menyimpan dan mengatur informasi tentang setiap item di dalam sistem inventory ini.
+ */
 data class ItemDetails(
     val id: Int = 0,
     val name: String = "",
@@ -76,9 +92,16 @@ data class ItemDetails(
 )
 
 /**
- * Extension function to convert [ItemUiState] to [Item]. If the value of [ItemDetails.price] is
+ * Extension function to convert [ItemDetails] to [Item]. If the value of [ItemDetails.price] is
  * not a valid [Double], then the price will be set to 0.0. Similarly if the value of
- * [ItemUiState] is not a valid [Int], then the quantity will be set to 0
+ * [ItemDetails.quantity] is not a valid [Int], then the quantity will be set to 0
+ */
+/**
+ * Extension function ini digunakan untuk mengkonversi data dari ItemDetails ke Item.
+ * Fungsi ini meng-copy properti id dan name secara langsung.
+ * Namun, properti price dan quantity akan dikonversi dari nilai string ke double dan int.
+ * Jika konversi gagal, maka nilai properti tersebut akan diatur ke nilai default (yaitu 0).
+ * Konversi ini digunakan untuk berinteraksi dengan database yang membutuhkan objek Item.
  */
 fun ItemDetails.toItem(): Item = Item(
     id = id,
@@ -87,12 +110,23 @@ fun ItemDetails.toItem(): Item = Item(
     quantity = quantity.toIntOrNull() ?: 0
 )
 
+/**
+ * Extension function ini digunakan untuk mengkonversi / mem-format properti harga pada suatu item kedalam bentuk mata uang.
+ * NumberFormat.getCurrencyInstance digunakan untuk mendapatkan format mata uang yang sesuai dengan mata uang lokal.
+ * Kemudian fungsi format digunakan untuk melakukan format pada harga yang awalnya bertipe Double menjadi bentuk mata uang.
+ * Fungsi ini membantu untuk menampilkan harga item dengan format mata uang yang sesuai.
+ */
 fun Item.formatedPrice(): String {
     return NumberFormat.getCurrencyInstance().format(price)
 }
 
 /**
  * Extension function to convert [Item] to [ItemUiState]
+ */
+/**
+ * Extension function ini digunakan untuk mengkonversi Item menjadi ItemUiState.
+ * Fungsi ini menerima parameter isEntryValid yang bersifat opsional dengan nilai default false.
+ * Fungsi ini akan membuat instance ItemUiState baru dengan mengisi properti itemDetails dengan hasil konversi dari fungsi toItemDetails().
  */
 fun Item.toItemUiState(isEntryValid: Boolean = false): ItemUiState = ItemUiState(
     itemDetails = this.toItemDetails(),
@@ -101,6 +135,11 @@ fun Item.toItemUiState(isEntryValid: Boolean = false): ItemUiState = ItemUiState
 
 /**
  * Extension function to convert [Item] to [ItemDetails]
+ */
+/**
+ * Extension function ini digunakan untuk mengkonversi Item menjadi objek ItemDetails.
+ * Fungsi ini meng-copy id dan name secara langsung. Dan properti price dan quantity akan dikonversi dari nilai numerik menjadi strings
+ *
  */
 fun Item.toItemDetails(): ItemDetails = ItemDetails(
     id = id,
