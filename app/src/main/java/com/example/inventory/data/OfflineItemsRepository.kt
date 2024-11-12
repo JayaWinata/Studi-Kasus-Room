@@ -18,6 +18,10 @@ package com.example.inventory.data
 
 import kotlinx.coroutines.flow.Flow
 
+/**
+ * Kelas ini mengimplementasikan interface ItemsRepository.
+ * Kelas ini digunakan untuk mengatur (CRUD) item di dalam database lokal melalui objek ItemDao
+ */
 class OfflineItemsRepository(private val itemDao: ItemDao) : ItemsRepository {
     override fun getAllItemsStream(): Flow<List<Item>> = itemDao.getAllItems()
 

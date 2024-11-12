@@ -23,6 +23,13 @@ import com.example.inventory.data.ItemsRepository
 /**
  * ViewModel to retrieve, update and delete an item from the [ItemsRepository]'s data source.
  */
+/**
+ * Kelas ini bertanggung jawab untuk mengatur state dan data yang berhubungan dengan ItemDetailsScreen.
+ * Kelas ini menerima SavedStateHandle sebagai parameter untuk memulihkan item ID saat terjadi perubahan konfigurasi.
+ * Nilai itemID dihasilkan oleh SavedStateHandle dan akan disimpan sebagai properti yang bersifat private.
+ * Konstanta TIMEOUT_MILLIS digunakan untuk menspesifikasikan nilai timeout, yang dapat digunakan untuk operasi pada network atau tugas- tugas lainnya
+ * di dalam ViewModel
+ */
 class ItemDetailsViewModel(
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
@@ -36,6 +43,12 @@ class ItemDetailsViewModel(
 
 /**
  * UI state for ItemDetailsScreen
+ */
+/**
+ * Data Class ini merepresentasikan UI state untuk sebuah item di dalam ItemDetailsScreen.
+ * Data class ini memiliki dua properti, yaitu outOfStock dan itemDetails.
+ * Properti outOfStock akan menentukan apakah item tersebut sedang out of stock atau tidak.
+ * Sedangkan properti itemDetails akan berisi objek ItemDetails yang merepresentasikan detail dari item tersebut.
  */
 data class ItemDetailsUiState(
     val outOfStock: Boolean = true,

@@ -35,6 +35,15 @@ import com.example.inventory.ui.navigation.InventoryNavHost
 /**
  * Top level composable that represents screens for the application.
  */
+
+/**
+ * Composable ini menerima parameter navController dengan tipe kelas NavHostController yang digunakan untuk melakukan navigasi antar layar / composable dalam aplikasi.
+ * Nilai default dari parameter ini adalah rememberNavController().
+ * Di dalam composable ini terdapat InventoryNavHost yang digunakan untuk menentukan navigasi antar layar / composable dalam aplikasi.
+ * Pada dasarnya, composable InventoryApp akan menginisialisasi atau meneriman NavHostController. Kemudian NavHostController teresbut akan dimasukkan pada parameter InventoryNavHost.
+ * Dan InventoryNavHost ini akan berperan dalam mengatur navigasi antara layar- layar yang berbeda di dalam aplikasi ini.
+ * Sehingga dapat dikatakan bahwa composable ini merupakan entry point dari aplikasi ini
+ */
 @Composable
 fun InventoryApp(navController: NavHostController = rememberNavController()) {
     InventoryNavHost(navController = navController)
@@ -42,6 +51,13 @@ fun InventoryApp(navController: NavHostController = rememberNavController()) {
 
 /**
  * App bar to display title and conditionally display the back navigation.
+ */
+/**
+ * Composable ini berperan sebagai tampilan top app bar dalam aplikasi ini.
+ * Beberapa hal yang dilakukan pada composable ini adalah menampilkan judul (title) aplikasi,
+ * dan terdapat sebuah tombol back yang digunakan untuk kembali ke layar sebelumnya.
+ * Namun tombol back ini hanya akan muncul jika nilai canNavigateBack bernilai true.
+ * Selain itu, composable ini menerima parameter modifier, sehingga pengguna dapat melakukan modifikasi styling dan layout
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

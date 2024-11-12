@@ -54,6 +54,10 @@ import com.example.inventory.ui.item.formatedPrice
 import com.example.inventory.ui.navigation.NavigationDestination
 import com.example.inventory.ui.theme.InventoryTheme
 
+/**
+ * Object HomeDestination ini mengimpelementasikan interface NavigationDestination.
+ * Objek ini merepresentasikan screen / layar atau destinasi di dalam navigation graph di dalam aplikasi ini.
+ */
 object HomeDestination : NavigationDestination {
     override val route = "home"
     override val titleRes = R.string.app_name
@@ -61,6 +65,9 @@ object HomeDestination : NavigationDestination {
 
 /**
  * Entry route for Home screen
+ */
+/**
+ * Merupakan composable utama untuk layar utama aplikasi.
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -102,6 +109,10 @@ fun HomeScreen(
     }
 }
 
+/**
+ * Composable ini digunakan sebagai container untuk menampilkan kumpulan items dalam list.
+ * Jika tidak ada items di dalam list, maka composable ini akan menampilkan pesan bahwa tidak ada item di dalam list.
+ */
 @Composable
 private fun HomeBody(
     itemList: List<Item>,
@@ -131,6 +142,9 @@ private fun HomeBody(
     }
 }
 
+/**
+ * Composable ini digunakan untuk menampilkan daftar items dalam list menggunakan LazyColumn.
+ */
 @Composable
 private fun InventoryList(
     itemList: List<Item>,
@@ -151,6 +165,9 @@ private fun InventoryList(
     }
 }
 
+/**
+ * Composable ini digunakan untuk menampilkan item tunggal dalam sebuah Card.
+ */
 @Composable
 private fun InventoryItem(
     item: Item, modifier: Modifier = Modifier
@@ -184,6 +201,9 @@ private fun InventoryItem(
     }
 }
 
+/**
+ * ketiga function di bawah ini digunakan untuk melakukan preview pada setiap composable di atas
+ */
 @Preview(showBackground = true)
 @Composable
 fun HomeBodyPreview() {

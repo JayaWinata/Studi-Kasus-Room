@@ -32,6 +32,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             InventoryTheme {
                 // A surface container using the 'background' color from the theme
+                /**
+                 * Pada MainActivity ini, terdapat background full-screen menggunakan Surface yang berisi InventoryApp().
+                 * Surface merupakan building block pada Compose. Surface berperan sebagai root container untuk UI yang dibuat.
+                 */
                 Surface(
                     modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
                 ) {

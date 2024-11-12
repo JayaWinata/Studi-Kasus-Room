@@ -19,14 +19,24 @@ package com.example.inventory.ui.navigation
 /**
  * Interface to describe the navigation destinations for the app
  */
+/**
+ *
+ */
 interface NavigationDestination {
     /**
      * Unique name to define the path for a composable
+     */
+    /**
+     * Properti ini merepresentasikan path yang digunakan untuk mengidentifikasi destinasi spesifik
+     * Properti ini sangat krusial untuk melakukan navigasi pada halaman yang benar menggunakan NavController dalam Jetpack Compose.
      */
     val route: String
 
     /**
      * String resource id to that contains title to be displayed for the screen.
+     */
+    /**
+     * Properti ini merepresentasikan Resource ID dari string yang berisi judul yang akan ditampilkan pada top bar pada aplikasi ini.
      */
     val titleRes: Int
 }

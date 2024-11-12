@@ -55,6 +55,14 @@ object ItemEntryDestination : NavigationDestination {
     override val titleRes = R.string.item_entry_title
 }
 
+/**
+ * Composable ini digunakan untuk membuat tampilan untuk menambahkan item baru pada inventory.
+ * Composable ini menggunakan Scaffold untuk menyediakan top app bar dan area untuk konten utama.
+ * Konten utama pada halaman ini diatur oleh ItemEntryBody.
+ * Argumen viewModel pada composable ini digunakan untuk menangani state dan logika bisnis yang terkait dengan item yang akan ditambahkan,
+ * termasuk mem-validasi input dan menyimpannya ke dalam repository
+ * Tampilan ini mengijinkan pengguna untuk melakukan input nama, harga, dan jumlah item yang akan ditambahkan.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ItemEntryScreen(
@@ -94,6 +102,12 @@ fun ItemEntryScreen(
     }
 }
 
+/**
+ * Composable ini digunakan untuk menampilkan sebuah form untuk menambahkan item baru ke dalam inventory
+ * Form ini memiliki input field untuk nama, harga, dan kuantitas.
+ * Fungsi lambda onItemValueChange digunakan untuk memperbarui state saat nilai input berubah.
+ * Kemudian terdapat tombol "Save" yang hanya dapat di-klik jika semua field sudah terisi / valid.
+ */
 @Composable
 fun ItemEntryBody(
     itemUiState: ItemUiState,
@@ -121,6 +135,14 @@ fun ItemEntryBody(
     }
 }
 
+/**
+ * Composable ini berisi form dengan tiga komponen OutlinedTextField yang digunakan untuk memasukkan nama, harga, dan kuantitas pada item yang akan ditambahkan
+ * Setiap field memiliki label yang sesuai dan validasi yang ditentukan.
+ * Fungsi lambda onValueChange digunakan untuk memperbarui state / itemDetails saat nilai input berubah.
+ * Form ini juga akan menammpilkan pesan "Required Fields" hanya pada saat form diaktifkan,
+ * sehingga dapat mengingatkan pengguna bahwa semua fileds wajib terisi.
+ *
+ */
 @Composable
 fun ItemInputForm(
     itemDetails: ItemDetails,
@@ -183,6 +205,9 @@ fun ItemInputForm(
     }
 }
 
+/**
+ * Composable ini digunakan untuk melakukan preview pada ItemEntryScreen
+ */
 @Preview(showBackground = true)
 @Composable
 private fun ItemEntryScreenPreview() {

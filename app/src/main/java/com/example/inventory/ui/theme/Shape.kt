@@ -19,6 +19,13 @@ import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.material3.Shapes
 import androidx.compose.ui.unit.dp
 
+/**
+ * Pada kode di bawah ini terdapat variable Shapes yang merupakan instance dari kelas Shapes.
+ * Pada instance ini terdapat shapes dengan ukuran yang berbebda, seperti extraSmall, small, dan medium.
+ * Setiap shape didefinisikan menggunakan CutCornerShape, yang akan membuat shape memiliki cut corner.
+ * Custom shapes ini nantinya dapat digunakan sebagai elemen UI seperti Button, Card, dsb. untuk memberikan
+ * visual aplikasi yang konsisten
+ */
 val Shapes = Shapes(
 
     extraSmall = CutCornerShape(topEnd = 8.dp, bottomStart = 8.dp),

@@ -24,6 +24,11 @@ import androidx.room.Query
 import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 
+/**
+ * Interface Data Access Object (DAO) ini adalah interface untuk berinteraksi dengan Room database tepatnya pada tabel 'items'.
+ * Pada interface ini terdapat beberapa suspend function yang digunakan untuk insert, update, delete, dan get (CRUD).
+ * Interface ItemDao ini menyediakan operasi database pada tabel "items" menggunakan Room  dengan cara yang terstruktur
+ */
 @Dao
 interface ItemDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)

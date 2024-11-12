@@ -22,6 +22,12 @@ import androidx.room.PrimaryKey
 /**
  * Entity data class represents a single row in the database.
  */
+/**
+ * Data Class Item ini merupakan entitas pada database Room yang merepresentasikan item pada aplikasi inventory ini.
+ * Data Class ini merupakan blueprint untuk merepresentasikan entitas "item" di dalam database.
+ * Setiap objek Item akan secara otomatis memiliki ID (Primary key), nama, harga, dan kuantitas.
+ * Struktur ini kemudian akan digunakan pada Room untuk mengatur struktur tabel dalam database.
+ */
 @Entity(tableName = "items")
 data class Item(
     @PrimaryKey(autoGenerate = true)

@@ -58,6 +58,9 @@ import com.example.inventory.data.Item
 import com.example.inventory.ui.navigation.NavigationDestination
 import com.example.inventory.ui.theme.InventoryTheme
 
+/**
+ * Objek ini mendefinisikan navigasi yang terkait dengan layar detail item dalam aplikasi.
+ */
 object ItemDetailsDestination : NavigationDestination {
     override val route = "item_details"
     override val titleRes = R.string.item_detail_title
@@ -65,6 +68,13 @@ object ItemDetailsDestination : NavigationDestination {
     val routeWithArgs = "$route/{$itemIdArg}"
 }
 
+/**
+ * Composable merupakan container dari body yang digunakan untuk menampilkan halaman detail tentang sebuah item pada aplikasi ini.
+ * Komponen- komponen yang ditampilkan adalah top app bar dengan tombol back, action button untuk mengedit item,
+ * dan area untuk konten utama.
+ * Area utama pada halaman ini akan menampilkan detail pada item dan menyediakan tombol untuk menjual dan menghapus item.
+ *
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ItemDetailsScreen(
@@ -109,6 +119,12 @@ fun ItemDetailsScreen(
     }
 }
 
+/**
+ * Composable ini menampilkan informasi detail tentang sebuah item, termasuk nama, kuantitas, dan harga.
+ * Composable ini juga menyediakam dua tombol, yaitu tombol "Sell" dan "Delete".
+ * Pada saat tombol delete ditekan, maka akan muncul dialog konfirmasi. Jika pengguna mengkonfirmasi dengan menekan tombol "Yes",
+ * maka fungis onDelete akan dijalankan.
+ */
 @Composable
 private fun ItemDetailsBody(
     itemDetailsUiState: ItemDetailsUiState,
@@ -154,6 +170,11 @@ private fun ItemDetailsBody(
     }
 }
 
+/**
+ * Composable ini menampilkan detail item dalam bentuk card.
+ * Card ini menampung beberapa informasi seperti nama item, kuantitas, dan harga di dalam Column layout,
+ * sehingga menghasilkan visual yang jelas dan menarik
+ */
 @Composable
 fun ItemDetails(
     item: Item, modifier: Modifier = Modifier
@@ -205,6 +226,11 @@ fun ItemDetails(
     }
 }
 
+/**
+ * Composable ini digunakan untuk membuat Row layout untuk menampilkan sebuah label beserta detail-nya.
+ * Composable ini menerima string resource ID untuk label dan detail item, serta modifier opsional.
+ * Setiap baris mengandung dua komponen teks, yaitu label dan detail item.
+ */
 @Composable
 private fun ItemDetailsRow(
     @StringRes labelResID: Int, itemDetail: String, modifier: Modifier = Modifier
@@ -216,6 +242,11 @@ private fun ItemDetailsRow(
     }
 }
 
+/**
+ * Composable ini digunakan untuk menampilkan dialog konfirmasi yang didalamnya terdapat
+ * sebuah title, pesan, dan dua tombol "Yes" dan "No". Pengguna harus mengkonfirmasi penghapusan dengan menekan
+ * tombol yes untuk menghindari penghapusan yang tidak disengaja. Tombol "No" digunakan untuk membatalkan proses penghapusan.
+ */
 @Composable
 private fun DeleteConfirmationDialog(
     onDeleteConfirm: () -> Unit, onDeleteCancel: () -> Unit, modifier: Modifier = Modifier
@@ -236,6 +267,9 @@ private fun DeleteConfirmationDialog(
         })
 }
 
+/**
+ * Composable ini digunakan untuk melakukan preview pada ItemDetailsScreen
+ */
 @Preview(showBackground = true)
 @Composable
 fun ItemDetailsScreenPreview() {

@@ -21,6 +21,11 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
+/**
+ * Kelas abstrak ini digunakan untuk berinteraksi dengan Room database.
+ * Kelas ini mendefinisikan sebuah Room database bernama item_database yang berisi tabel bernama items.
+ * Kelas ini menggunakan pola singleton untuk memastikan bahwa hanya terdapat satu instance dari kelas ini yang aktif.
+ */
 @Database(entities = [Item::class], version = 1, exportSchema = false)
 abstract class InventoryDatabase : RoomDatabase() {
 

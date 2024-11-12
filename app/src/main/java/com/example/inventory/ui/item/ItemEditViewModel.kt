@@ -26,6 +26,13 @@ import com.example.inventory.data.ItemsRepository
 /**
  * ViewModel to retrieve and update an item from the [ItemsRepository]'s data source.
  */
+/**
+ * Kelas ini digunakan untuk mengatur state dan logika untuk mengedit sebuah item
+ * Kelas ini menerima SavedStateHandle untuk memulihkan item ID saat terjadi perubahan konfigurasi.
+ * Kemudian properti itemUiState akan menyimpan state saat ini pada item yang sedang di-edit, termasuk nama, harga, dan kuantitas.
+ * Kemudian fungsi validateInput digunakan untuk memeriksa apakah field di dalam formulir sudah terisi.
+ *
+ */
 class ItemEditViewModel(
     savedStateHandle: SavedStateHandle,
 ) : ViewModel() {

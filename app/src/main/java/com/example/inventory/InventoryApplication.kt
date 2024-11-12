@@ -20,6 +20,11 @@ import android.app.Application
 import com.example.inventory.data.AppContainer
 import com.example.inventory.data.AppDataContainer
 
+/**
+ * Kelas ini mengatur mekanisme penerimaan dependency menggunakan AppContainer.
+ * Pada saat aplikasi berjalan, fungsi onCreate pada kelas ini akan membuat instance AppDataContainer dan akan disimpan ke dalam property container.
+ * Pendekatan ini dapat membuat seluruh dependencies diatur di dalam satu tempat, sehingga akan lebih mudah untuk mengatur dependencies tersebut.
+ */
 class InventoryApplication : Application() {
 
     /**

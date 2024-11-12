@@ -35,6 +35,10 @@ import com.example.inventory.ui.AppViewModelProvider
 import com.example.inventory.ui.navigation.NavigationDestination
 import com.example.inventory.ui.theme.InventoryTheme
 
+/**
+ *Objek ini mendefinisikan navigasi yang terkait dengan layar detail item dalam aplikasi.
+ *
+ */
 object ItemEditDestination : NavigationDestination {
     override val route = "item_edit"
     override val titleRes = R.string.edit_item_title
@@ -42,6 +46,13 @@ object ItemEditDestination : NavigationDestination {
     val routeWithArgs = "$route/{$itemIdArg}"
 }
 
+/**
+ * Composable ini digunakan untuk menampilkan sebuah tampilan untuk mengedit sebuah item di dalam aplikasi ini.
+ * Composable ini memanfaatkan Scaffold untuk menyediakan top app bar dengan tombol back dan area konten.
+ * Area untuk konten ini menggunakan ItemEntryBody untuk menampilkan formulir untuk mengedit item.
+ * Kemudian argumen viewModel digunakan untuk menyediakan ViewModel yang terkait dengan layar ini.
+ * ViewModel ini akan digunakan untuk mengelola state dan data beserta logika bisnis yang terkait dengan item yang sedang di edit.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ItemEditScreen(
@@ -75,6 +86,9 @@ fun ItemEditScreen(
     }
 }
 
+/**
+ * Digunakan untuk melakukan preview pada ItemEditScreen
+ */
 @Preview(showBackground = true)
 @Composable
 fun ItemEditScreenPreview() {

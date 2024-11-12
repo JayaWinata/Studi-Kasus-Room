@@ -22,6 +22,10 @@ import com.example.inventory.data.Item
 /**
  * ViewModel to retrieve all items in the Room database.
  */
+/**
+ * kelas HomeViewModel memiliki konstanta yang bersifat private bernama TIMEOUT_MILLIS yang merepresentasikan nilai timeout dengan waktu 5 detik.
+ * Konstanta ini dapat diakses di dalam HomeViewModel atau kelas lain yang terkait dengan ViewModel ini. TIMEOUT_MILLIS ini digunakan untuk operasi yang memerlukan timeout seperti network request, atau data processing
+ */
 class HomeViewModel() : ViewModel() {
     companion object {
         private const val TIMEOUT_MILLIS = 5_000L
@@ -30,5 +34,8 @@ class HomeViewModel() : ViewModel() {
 
 /**
  * Ui State for HomeScreen
+ */
+/**
+ * Data class HomeUiState merepresentasikan UI state dari Layar Home. State ini termasuk list yang diinisalisasi sebagai empty list
  */
 data class HomeUiState(val itemList: List<Item> = listOf())
